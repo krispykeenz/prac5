@@ -120,6 +120,27 @@ public boolean delete(E item)
 	  next = null;
     }
   }
+
+    public boolean isPalindrome() {
+
+        StackAsMyLinkedList stack = new StackAsMyLinkedList();
+        QueueAsMyLinkedList queue = new QueueAsMyLinkedList();
+
+        Node current = head;
+        while (current != null) {
+            stack.push(current.element);
+            queue.enqueue(current.element);
+            current = current.next;
+        }
+
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.dequeue())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
    
 } // end myLinkedList class
 
